@@ -10,7 +10,7 @@ pipeline {
        
         stage('source') {
             steps {
-               checkout scm
+               // checkout scm
                sh 'ls -la'
             }
             
