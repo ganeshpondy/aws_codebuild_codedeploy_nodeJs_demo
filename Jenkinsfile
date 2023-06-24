@@ -56,7 +56,11 @@ pipeline {
              echo 'This will run only if successful'  
          }  
          failure {  
-             mail bcc: '', body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "foo@foomail.com";  
+            // mail bcc: '', body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "foo@foomail.com";  
+            emailext body: "${currentBuild.currentResult}: ${env.JOB_NAME} build #${env.BUILD_NUMBER}\n\n${env.BUILD_URL}\n\nError details:\n${errorStackTrace()}",
+            recipientProviders: [[$class: 'DevelopersRecipientProvider']],
+            subject: "${currentBuild.currentResult}: ${env.JOB_NAME} build #${env.BUILD_NUMBER}"
+
          }  
          unstable {  
              echo 'This will run only if the run was marked as unstable'  
