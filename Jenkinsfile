@@ -10,8 +10,8 @@ pipeline {
        
         stage('source') {
             steps {
-               git credentialsId: 'GitHub_GaneshPondy', url: 'https://github.com/ganeshpondy/aws_codebuild_codedeploy_nodeJs_demo.git'
-               sh 'cat index.js'
+               git credentialsId: 'GitHub_GaneshPondy', url: 'https://github.com/ganeshpondy/sample-repo.git'
+               sh 'cat index.html'
             }
             
         }
