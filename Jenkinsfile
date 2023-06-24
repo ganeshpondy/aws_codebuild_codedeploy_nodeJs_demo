@@ -29,6 +29,7 @@ pipeline {
             //     echo secver
             // }
             sh 'npm install'
+            sh 'uptime; uname -a'
             }
             
         }
