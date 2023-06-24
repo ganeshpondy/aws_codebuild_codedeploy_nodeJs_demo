@@ -11,6 +11,7 @@ pipeline {
         stage('source') {
             steps {
                // checkout scm
+                echo "Source Stage"
                sh 'ls -la'
             }
             
@@ -28,6 +29,7 @@ pipeline {
             //     // some block
             //     echo secver
             // }
+            echo "Build Stage"
             sh 'npm install'
             sh 'uptime; uname -a'
             }
