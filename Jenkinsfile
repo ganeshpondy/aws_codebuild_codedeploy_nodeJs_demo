@@ -32,7 +32,7 @@ pipeline {
             sh 'npm install'
             echo 'Build Stage'
             sh 'uptime; uname -a'
-            sh 'uname -z'    // Error Line
+            // sh 'uname -z'    // Error Line
             }
             
         }
