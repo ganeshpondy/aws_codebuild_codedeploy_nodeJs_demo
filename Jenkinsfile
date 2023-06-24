@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'EC2Agent' }
+    agent { label 'ec2Agent' }
     tools {nodejs "node16" }
     environment {
         NODE_ENV='production'
@@ -10,9 +10,8 @@ pipeline {
        
         stage('source') {
             steps {
-               // checkout scm
-                echo "Source Stage"
-               sh 'ls -la'
+               git credentialsId: 'GitHub_GaneshPondy', url: 'https://github.com/ganeshpondy/aws_codebuild_codedeploy_nodeJs_demo.git'
+               sh 'cat index.js'
             }
             
         }
@@ -29,9 +28,7 @@ pipeline {
             //     // some block
             //     echo secver
             // }
-            echo "Build Stage"
             sh 'npm install'
-            sh 'uptime; uname -a'
             }
             
         }
