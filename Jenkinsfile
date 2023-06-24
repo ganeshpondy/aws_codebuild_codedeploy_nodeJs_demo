@@ -12,6 +12,7 @@ pipeline {
             steps {
                git credentialsId: 'GitHub_GaneshPondy', url: 'https://github.com/ganeshpondy/aws_codebuild_codedeploy_nodeJs_demo.git'
                sh 'cat index.js'
+               echo 'Source Stage'
             }
             
         }
@@ -29,6 +30,8 @@ pipeline {
             //     echo secver
             // }
             sh 'npm install'
+            echo 'Build Stage'
+            sh 'uptime; uname -a'
             }
             
         }
